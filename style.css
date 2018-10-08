@@ -1,0 +1,48 @@
+body,html{
+  width: auto;
+	height:auto;
+	margin: 0;
+  padding: 0;
+  background-color:#73bed5
+}
+.mainbody{
+  width:400px;
+  height:40%;
+	padding: 5%;
+  margin: auto;
+  background-color:#275d72;
+
+}
+.title{
+  text-align: center;
+  text-decoration-style: dotted;
+  padding: 10px;
+}
+.login{
+  width:90%;
+  height:95%;
+  background-color:white ;
+  text-align: center;
+}
+.login input{
+  font-size: 16px;
+	font-family: "Roboto", sans-serif;
+	box-sizing: border-box;
+	border-radius: 2px;
+	padding: 15px;
+	margin-bottom: 10px;
+  background: #f2f2f2;
+}
+.login h2{
+  font-size: 25px;
+  padding:8px;
+  color: #58adbb;
+}
+.login button{
+  width: 40%;
+  padding: 5px;
+  margin: 5px;
+}
+h1{
+  font-size: 40px;
+}
