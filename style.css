@@ -1,48 +1,132 @@
-body,html{
-  width: auto;
-	height:auto;
-	margin: 0;
+* {
+  font-family: "Roboto", sans-serif;
+}
+body,
+html {
+  width: 100%;
+  height: auto;
+  margin: 0;
   padding: 0;
-  background-color:#73bed5
+  background-color: #73bed5;
 }
-.mainbody{
-  width:400px;
-  height:40%;
-	padding: 5%;
+.mainbody {
+  width: 400px;
+  height: 40%;
+  padding: 5%;
   margin: auto;
-  background-color:#275d72;
-
+  background-color: #275d72;
 }
-.title{
+.title {
   text-align: center;
   text-decoration-style: dotted;
   padding: 10px;
 }
-.login{
-  width:90%;
-  height:95%;
-  background-color:white ;
+.login {
+  width: 90%;
+  height: 95%;
+  background-color: white;
   text-align: center;
 }
-.login input{
+.login input {
   font-size: 16px;
-	font-family: "Roboto", sans-serif;
-	box-sizing: border-box;
-	border-radius: 2px;
-	padding: 15px;
-	margin-bottom: 10px;
+
+  box-sizing: border-box;
+  border-radius: 2px;
+  padding: 15px;
+  margin-bottom: 10px;
   background: #f2f2f2;
 }
-.login h2{
+.login h2 {
   font-size: 25px;
-  padding:8px;
+  padding: 8px;
   color: #58adbb;
 }
-.login button{
+.login button {
   width: 40%;
   padding: 5px;
   margin: 5px;
 }
-h1{
+/* h1 {
   font-size: 40px;
+  text-align: center;
+} */
+.home-container {
+  width: auto;
+  height: auto;
+}
+.home-topnav {
+  width: 1600px;
+  height: 100px;
+  text-align: center;
+}
+
+.home-center {
+  width: 100vw;
+  height: 600px;
+  display: grid;
+  grid-template-areas:
+  'home-leftbar home-mainbody'
+}
+.home-mainbody {
+  grid-area: home-mainbody;
+  height: auto;
+  background-color: #58adbb;
+  float: right;
+}
+.home-mainbody-list {
+  width: 1200px;
+  margin: 20px;
+  height: 590px;
+  background-color: white;
+}
+.home-leftbar {
+    grid-area: home-leftbar;
+  margin-right: 20px;
+  height: auto;
+  background-color: #275d72;
+  float: left;
+  padding: 8px;
+}
+.pill {
+  padding: 10px;
+  font-size: 15px;
+  text-align: left;
+  background-color: #383838;
+  width: 95%;
+  margin-bottom: 10px;
+  margin-right: 9px;
+}
+.pill a {
+  text-decoration: none;
+  color: white;
+
+}
+.pill:hover{
+    background: #404448;
+    color: #f1f1f1;
+}
+.boxes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 20px;
+}
+.box {
+  display: inline-block;
+  width: 580px;
+  height: 270px;
+  background: #404448;
+  color: white;
+  margin: 20px;
+  text-align: center;
+  text-shadow: 4px;
+  font-size: 40px;
+}
+.content-topnav a {
+  text-decoration: none;
+  color: white;
+  float: right;
+  padding: 5px;
+  font-size: 15px;
+  text-align: left;
 }
