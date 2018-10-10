@@ -29,7 +29,6 @@ html {
 }
 .login input {
   font-size: 16px;
-
   box-sizing: border-box;
   border-radius: 2px;
   padding: 15px;
@@ -46,10 +45,7 @@ html {
   padding: 5px;
   margin: 5px;
 }
-/* h1 {
-  font-size: 40px;
-  text-align: center;
-} */
+
 .home-container {
   width: auto;
   height: auto;
@@ -60,9 +56,13 @@ html {
   text-align: center;
 }
 .content-topnav a{
-  text-decoration: none;
-  color: white;
+background-color: #383838;
+margin-right: 5px;
+border-radius: 10px;
+width: 8%;
+text-align: center;
 }
+
 .home-center {
   width: 100vw;
   height: 600px;
@@ -83,7 +83,7 @@ html {
   background-color: white;
 }
 .home-leftbar {
-    grid-area: home-leftbar;
+  grid-area: home-leftbar;
   margin-right: 20px;
   height: auto;
   background-color: #275d72;
@@ -145,4 +145,21 @@ td, th {
 }
 tr:nth-child(even) {
   background-color: #ddd;
+}
+.product-detail-card{
+  background: #ddd;
+  width: 50%;
+  text-align: center;
+}
+.product-detail-card button{
+  margin: 1%;
+}
+.add-to-cart:hover {
+  background: #404448;
+  color: #f1f1f1;
+}
+.search{
+margin: 5px;
+background-color: rgb(177, 155, 155);
+float: right;
 }
