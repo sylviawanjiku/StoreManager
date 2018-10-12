@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Store Manager|Add Cart</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../Assets/css/style.css">
   </head>
   <body>
     <div class="container">
@@ -14,6 +14,7 @@
         <div>
 
                 <div class="detail-card" >
+                    <form class="data-form" action="products.html" method="post">
                         <h1>Sugar</h1>
                         <img src="sugar.jpg" alt="Sugar" style="width:100%">                       
                         <p><b>Product Id:</b>Sug</p>
@@ -24,7 +25,17 @@
                         <p><b>Available stock:</b>50</p>
                         <p><b>Minimum Stock:</b>20</p>
                         <p><b>UoM:</b>1KG</p> 
-                        <p><button class="button" >Add to Cart</button></p>  
+                        <select>
+                                <option value="Category">Select Category</option>
+                                <option value="kitchen">kitchen</option>
+                                <option value="toiletries">Toiletries</option>
+                                <option value="diapers">Diapers</option>
+                              </select><br>
+                         
+                         <form>
+                            <button class="button" formaction="products.html">Add to Category</button>
+                          </form>
+                      </form>
                      </div>
          
         
