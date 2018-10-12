@@ -35,17 +35,30 @@ html {
   margin-bottom: 10px;
   background: #f2f2f2;
 }
-.login h2 {
+.login-text {
   font-size: 25px;
   padding: 8px;
   color: #58adbb;
 }
-.login button {
+.button {
   width: 40%;
   padding: 5px;
   margin: 5px;
 }
-
+.button:hover{
+  background: #404448;
+  color: #f1f1f1;
+}
+.purch-button{
+  width: 20%;
+  float: right;
+  margin-right: 50px;
+  margin-top: 5spx;
+}
+.purch-button:hover{
+  background: #404448;
+  color: #f1f1f1;
+}
 .home-container {
   width: auto;
   height: auto;
@@ -99,10 +112,11 @@ text-align: center;
   margin-bottom: 10px;
   margin-right: 9px;
 }
-.pill a {
+a{
   text-decoration: none;
+}
+.pill a {  
   color: white;
-
 }
 .pill:hover{
     background: #404448;
@@ -126,7 +140,6 @@ text-align: center;
   font-size: 40px;
 }
 .content-topnav a {
-  text-decoration: none;
   color: white;
   float: right;
   padding: 5px;
@@ -155,14 +168,6 @@ tr:nth-child(even) {
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-}
-.product-detail-card button{
-  margin: 1%;
-  
-}
-.add-to-cart:hover {
-  background: #404448;
-  color: #f1f1f1;
 }
 .search{
 margin: 5px;
