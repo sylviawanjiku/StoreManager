@@ -15,8 +15,8 @@
             <div class="detail-card" >
           <form id="register" class="data-form">
             Username:<br><input type="text" name="username" id="username" required><br>            
-            First Name:<br><input type="text" name="First Name" id="fname" required ><br>
-            Last Name:<br><input type="text" name="Last Name" id="lname" required ><br>
+            First Name:<br><input type="text" name="First Name" id="first_name" required ><br>
+            Last Name:<br><input type="text" name="Last Name" id="last_name" required ><br>
             Password:<br><input type="password" name="password" id="password" required ><br>
             Email:<br><input type="email" name="Email" id="email" required ><br>
             Is_Admin:<br><input type="text" name="Is_Admin" id="admin" required ><br> 
@@ -27,82 +27,6 @@
         
         </div>
     </div>
-    <!-- <script type="text/javascript" src="../Assets/js/script.js"></script> -->
-    <script>    
-  var signup = document.getElementById('register')
-  if (signup){
-  signup.addEventListener('submit', Signup);
-
-  function Signup(e){
-    e.preventDefault();
-
-    let token = localStorage.getItem('token')
-
-    let username = document.getElementById('username').value;   
-    let firstname = document.getElementById('fname').value;
-    let lastname = document.getElementById('lname').value;
-    let password = document.getElementById('password').value;
-    let email = document.getElementById('email').value; 
-    let is_admin = document.getElementById('admin').value;
-
-    // const signup_data= {
-    //   "username": username,
-    //   "email": email,
-    //   "firstname": firstname,
-    //   "lastname": lastname,
-    //   "password": password,     
-    //   "is_admin": is_admin
-    // }
-
-    fetch('http://127.0.0.1:5000/api/v2/signup', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-type': 'application/json', 
-        'Access-Control-Allow-Origin':'*',
-        'Access-Control-Request-Method': '*',
-        "Authorization": 'Bearer ' + token
-      },
-      body: JSON.stringify({username:username,firstname:firstname,lastname:lastname,
-                            password:password, email:email,is_admin:is_admin})
-    })
-    .then((res)=> res.json())
-    // .then((data)=>console.log(data))
-    .then((data)=>{
-      console.log(data)
-      // let message =document.getElementById('message')
-      if(data.message == "enter valid email"){
-        document.getElementById("message").style.color = 'red';             
-        document.getElementById('message').innerHTML = data.message;
-      }
-      if(data.message == "username must be a string"){
-        document.getElementById("message").style.color = 'red';             
-        document.getElementById('message').innerHTML = data.message;
-      }
-      if(data.message == "Firstname must be a string"){
-        document.getElementById("message").style.color = 'red';             
-        ocument.getElementById('message').innerHTML = data.message;
-      }
-      if(data.message == "Lastname must be a string"){
-        document.getElementById("message").style.color = 'red';             
-        document.getElementById('message').innerHTML = data.message;;
-      }
-      if(data.message == "Password should start with a capital letter and include a number"){
-        document.getElementById("message").style.color = 'red';             
-        document.getElementById('message').innerHTML = data.message;
-      }
-      if(data.message == "User already exists"){
-        document.getElementById("message").style.color = 'red';             
-        document.getElementById('message').innerHTML = data.message;
-      }
-      if(data.message == "user created successfully"){
-        document.getElementById("message").style.color = 'green';             
-        document.getElementById('message').innerHTML = data.message;
-      } 
-    })
-    .catch((err) => console.log(err))
-  }  
-} 
-    </script>
+    <script type="text/javascript" src="../Assets/js/script.js"></script>
   </body>
 </html>
