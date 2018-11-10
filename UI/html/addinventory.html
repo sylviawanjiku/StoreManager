@@ -13,23 +13,25 @@
      
       <div class="min-body">
           <div class="detail-card" >
-          <form class="data-form" action="products.html">
+          <form id="addproduct" class="data-form" action="products.html">
              
-                Product-Id:<br><input type="text" name="Product-Id" ><br>
-                Product Name<br><input type="text" name="Product Name" ><br>
-                Brand<br><input type="text" name="Brand"  ><br>     
-                Quantity<br><input type="text" name="Quantity"  ><br>                
-                Price<br><input type="text" name="Price"  ><br>
-                added stock count:<br><input type="text" name="Added stock count"  ><br>
-                minimum stock count:<br><input type="text" name="Min stock count"  ><br>
-                UoM<br><input type="text" name="password" ><br>  
-                <select>
+                
+                Product Name<br><input type="text" name="Product Name" id="product_name" ><br>
+                Brand<br><input type="text" name="Brand" id="brand" ><br>     
+                Quantity<br><input type="text" name="Quantity" id="quantity" ><br>                
+                Price<br><input type="number" name="Price" id="price"  ><br>
+                Avail_stock:<br><input type="number" name="Product-Id" id="avail_stock" ><br>
+                minimum stock count:<br><input type="number" name="Min stock count" id="min_stock"  ><br>
+                UoM<br><input type="text" name="password" id="uom"><br>
+                Category:<br><input type="text" name="Added stock count" id="category" ><br>
+                <input type="submit" class="button" value="Add Product">
+                <!-- <select>
                     <option value="Category">Select Category</option>
                     <option value="kitchen">kitchen</option>
                     <option value="toiletries">Toiletries</option>
                     <option value="diapers">Diapers</option>
-                  </select><br> 
-            <button class="button"  type="submit" name="New Product"><b>Add Product</b></button>
+                  </select><br>  -->
+            <!-- <button class="button"  type="submit" name="New Product"><b>Add Product</b></button> -->
           </form>
          
          
@@ -38,7 +40,6 @@
 
       
     </div>
-
-
+    <script type="text/javascript" src="../Assets/js/script.js"></script>
   </body>
 </html>
