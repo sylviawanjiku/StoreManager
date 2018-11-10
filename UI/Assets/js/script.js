@@ -214,7 +214,7 @@ document.getElementById('viewProducts').addEventListener('click', viewProducts);
                       <td> ${product.price}</td>                     
                       <td> ${product.avail_stock}</td>                      
                       <td> ${product.min_stock}</td>
-                      <td> ${product.v}</td>
+                      <td> ${product.uom}</td>
                       <td> ${product.category}</td>
                       <td><button>view</button>
                           <button>Edit</button>
