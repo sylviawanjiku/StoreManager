@@ -20,11 +20,10 @@
                 <div class="search">
                   <input type="search" name="Search" placeholder="Search Product"/>                  
                   <input type="submit" value="Search"/></div>
-                  <input id="view_produucts" type="button" class="button" value="View Products">
+                  <button id="viewProducts" class="button" >View Products</button>
                   <div>              
-                <table id="products_table">                  
+                <table id="products-table">                  
                   <tr>
-                    <th>Product ID</th>
                     <th>Product Name</th>
                     <th>Brand</th>                    
                     <th>Quantity</th>
@@ -33,69 +32,9 @@
                     <th>Minstock</th>
                     <th>UoM</th>
                     <th>Category</th>
-                    <!-- <th>Actions</th>                     -->
+                    <th>Actions</th>                    
                   </tr>
-                  <tr>
-                      
-                      <!-- <td>Maize Flour</td>                      
-                      <td>Pembe</td>
-                      <td>2KG</td>
-                      <td>90</td>                     
-                      <td>50</td>                      
-                      <td>20</td>
-                      <td>Packets</td>
-                      <td>Kitchen</td> -->
-                      <!-- <td><button>view</button><button>Edit</button><button>Delete</button></td> -->
-                  </tr>
-                  <tr>
-                     
-                      <!-- <td>Tea leaves</td>                      
-                      <td>Ketepa</td>
-                      <td>30grams</td>
-                      <td>20</td>                    
-                      <td>50</td>                     
-                      <td>40</td>
-                      <td>Sachets</td>
-                      <td>Kitchen</td> -->
-                      <!-- <td><button>view</button><button>Edit</button><button>Delete</button></td> -->
-                  </tr>
-                  <tr>
-                      
-                      <!-- <td>Toothpaste</td>                    
-                      <td>Aquafresh</td>
-                      <td>250grams</td>
-                      <td>70</td>                      
-                      <td>80</td>                     
-                      <td>10</td>
-                      <td>pieces</td>
-                      <td>Kitchen</td> -->
-                      <!-- <td><button>view</button><button>Edit</button><button>Delete</button></td> -->
-                  </tr> 
-                  <tr>
-                      
-                      <!-- <td>Sugar</td>                      
-                      <td>Mumias</td>
-                      <td>1KG</td>
-                      <td>150</td>                     
-                      <td>50</td>                      
-                      <td>20</td>
-                      <td>Kilograms</td>
-                      <td>Kitchen</td> -->
-                      <!-- <td><button>view</button><button>Edit</button><button>Delete</button></td> -->
-                  </tr> 
-                  <tr>
-                    
-                      <!-- <td>Tissue</td>                      
-                      <td>Hannan</td>
-                      <td>1 piece</td>
-                      <td>100</td>                     
-                      <td>40</td>                     
-                      <td>10</td>
-                      <td>Pieces</td>
-                      <td>Kitchen</td> -->
-                      <!-- <td><button>view</button><button>Edit</button><button>Delete</button></td> -->
-                  </tr> 
-                  
+                  <tbody id="prod-body"></tbody>
                 </table>
               </div>  
                      
@@ -112,72 +51,6 @@
               </div>
           </div>
     </div>
-    <script>
-
-    // function viewPage() {
-    // if (window.location.href.includes("inventory.html")) {
-    //   getAllProducts();
-    // }
-    var viewprod = document.getElementById('view_produucts')
-    if (viewprod){
-      viewprod.addEventListener('click', getAllProducts);
-
-    
-    function getAllProducts(){
-
-      let products_table = document.getElementById('products_table').innerHTML
-
-      fetch('http://127.0.0.1:5000/api/v2/products',{
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json, text/plain, */*',
-          'Content-type': 'application/json', 
-          'Access-Control-Allow-Origin':'*',
-          'Access-Control-Request-Method': '*',
-          "Authorization": 'Bearer ' + token
-        }
-      })
-     .then((res)=> res.json())
-     .then((data)=>{
-      if (data.message =="The product list is empty"){
-      document.getElementById("message").style.color = 'red';             
-      document.getElementById('message').innerHTML = data.message;
-      }
-      if(data.message =="Products retrieved successfully"){
-          products_table = 
-                  <tr>
-                    <th>Product ID</th>
-                    <th>Product Name</th>
-                    <th>Brand</th>                    
-                    <th>Quantity</th>
-                    <th>Price</th>                   
-                    <th>Avail stock</th> 
-                    <th>Minstock</th>
-                    <th>UoM</th>
-                    <th>Category</th>
-                  </tr>;
-          data['products_list'].forEach(function(products_list) {
-            products_table +=
-                    <tr>
-                      <td>${product.product_id}</td>
-                      <td>${product.product_name}</td>                      
-                      <td> ${product.brand}</td>
-                      <td> ${product.quantity}</td>
-                      <td> ${product.price}</td>                     
-                      <td> ${product.avail_stock}</td>                      
-                      <td> ${product.min_stock}</td>
-                      <td> ${product.v}</td>
-                      <td> ${product.category}</td>
-                   </tr>;           
-            
-          });
-          
-        }
-    })
-    .catch((err) => console.log(err))
-   }
-   }
-  
-    </script>
+  <script type="text/javascript" src="../Assets/js/script.js"></script>
   </body>
 </html>

@@ -181,3 +181,51 @@ var createproduct = document.getElementById('addproduct')
 }  
 }
 // addproduct----------------------------------------------------------------------------------------------
+document.getElementById('viewProducts').addEventListener('click', viewProducts);
+    
+    function viewProducts(){
+
+      let productList = document.getElementById('prod-body')
+      let token = localStorage.getItem('token')
+
+      fetch('http://127.0.0.1:5000/api/v2/products',{
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-type': 'application/json', 
+          'Access-Control-Allow-Origin':'*',
+          'Access-Control-Request-Method': '*',
+          "Authorization": 'Bearer ' + token
+        }
+      })
+     .then((res)=> res.json())
+     .then(data => {
+      if (data.message =="The product list is empty"){
+      document.getElementById("message").style.color = 'red';             
+      document.getElementById('message').innerHTML = data.message;
+      }
+      if(data.message =="Products retrieved successfully"){
+          data.products.forEach((product,index) => {
+              productList.innerHTML += `<tr>
+                      
+                      <td>${product.product_name}</td>                      
+                      <td> ${product.brand}</td>
+                      <td> ${product.quantity}</td>
+                      <td> ${product.price}</td>                     
+                      <td> ${product.avail_stock}</td>                      
+                      <td> ${product.min_stock}</td>
+                      <td> ${product.v}</td>
+                      <td> ${product.category}</td>
+                      <td><button>view</button>
+                          <button>Edit</button>
+                          <button>Delete</button>
+                      </td> 
+                    </tr>`;       
+            
+          });
+          
+        }
+    })
+    .catch((err) => console.log(err))
+   }
+  // get all products--------------------------------------------------------
