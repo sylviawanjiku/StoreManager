@@ -34,6 +34,33 @@ let login = document.getElementById('login_form')
        }
       }
 // Login.......................................................................
+document.getElementById('logout-user').addEventListener('click', logoutUsers);
+
+function logoutUsers(){
+  let token = localStorage.getItem('token')
+
+  fetch('http://127.0.0.1:5000/api/v2/logout',{
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-type': 'application/json', 
+          'Access-Control-Allow-Origin':'*',
+          'Access-Control-Request-Method': '*',
+          "Authorization": 'Bearer ' + token
+        }
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.removeItem('access_token');
+        if(data.message ==  "Successfully logged out"){
+          
+      }
+      window.location ='http://127.0.0.1:5500/UI/html/index.html';
+           })
+}
+
+//logout.........................................................................
+
 var signup = document.getElementById('register')
 if (signup){
 signup.addEventListener('submit', Signup);
