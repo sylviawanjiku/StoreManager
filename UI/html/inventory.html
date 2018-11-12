@@ -11,14 +11,14 @@
               <h1>Inventory</h1>
           </div>
           <div class="content-topnav">  
-              <a href="index.html">Logout</a>           
+              <a id="logout" href="index.html">Logout</a>           
             <a href="addinventory.html">Add Inventory</a>                       
           </div>
           <div class="home-center">
             <div class="home-mainbody">
               <div class="home-mainbody-list">
                 <div class="search">
-                  <input type="search" name="Search" placeholder="Search Product"/>                  
+                  <input type="text" id="productInput"  onkeyup="productFilter()" name="Search" placeholder="Search Product"/>                  
                   <input type="submit" value="Search"/></div>
                   <button id="viewProducts" class="button" >View Products</button>
                   <div>              
@@ -43,7 +43,7 @@
             </div>
             <div class="home-leftbar">
                 <div class="home-leftbar">
-                    <div class="pill"><a href="products.html">Products</a></div>
+                    <div class="pill"><a href="addinventory.html"> Add Products</a></div>
                     <div class="pill"><a href="inventory.html">Inventory</a></div>
                     <div class="pill"><a href="salesrecord.html">Sales Record</a></div>
                     <div class="pill"><a href="employee.html">Employee</a></div>
@@ -52,5 +52,74 @@
           </div>
     </div>
   <script type="text/javascript" src="../Assets/js/script.js"></script>
-  </body>
+  <script>
+    function productFilter() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("productInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("products-table");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+document.getElementById('viewProducts').addEventListener('click', viewProducts);
+    
+    function viewProducts(){
+
+      let productList = document.getElementById('prod-body')
+      let token = localStorage.getItem('token')
+
+      fetch('http://127.0.0.1:5000/api/v2/products',{
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-type': 'application/json', 
+          'Access-Control-Allow-Origin':'*',
+          'Access-Control-Request-Method': '*',
+          "Authorization": 'Bearer ' + token
+        }
+      })
+     .then((res)=> res.json())
+     .then(data => {
+      if (data.message =="The product list is empty"){
+      // document.getElementById("message").style.color = 'red';             
+      // document.getElementById('message').innerHTML = data.message;
+     
+    }
+      if(data.message =="Products retrieved successfully"){
+          data.products.forEach((product,index) => {
+              productList.innerHTML += `<tr>
+                      
+                      <td>${product.product_name}</td>                      
+                      <td> ${product.brand}</td>
+                      <td> ${product.quantity}</td>
+                      <td> ${product.price}</td>                     
+                      <td> ${product.avail_stock}</td>                      
+                      <td> ${product.min_stock}</td>
+                      <td> ${product.uom}</td>
+                      <td> ${product.category}</td>
+                      <td>
+                          <button>Edit</button>
+                          <button>Delete</button>
+                      </td> 
+                    </tr>`;       
+            
+          });
+          
+        }
+    })
+    .catch((err) => console.log(err))
+   }
+  </script>
+
+</body>
 </html>
