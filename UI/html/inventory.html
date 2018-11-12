@@ -92,8 +92,8 @@ document.getElementById('viewProd').addEventListener('click', viewProducts);
      .then((res)=> res.json())
      .then(data => {
       if (data.message =="The product list is empty"){
-      // document.getElementById("message").style.color = 'red';             
-      // document.getElementById('message').innerHTML = data.message;
+      document.getElementById("message").style.color = 'red';             
+      document.getElementById('message').innerHTML = data.message;
      
     }
       if(data.message =="Products retrieved successfully"){
@@ -142,17 +142,19 @@ document.getElementById('viewProd').addEventListener('click', viewProducts);
     .then(res => res.json())
     .then((data)=>{
       if (data.message =='Product not found'){
-        alert(`${data.message} !`);
-      
+        document.getElementById("message").style.color = 'red';             
+        document.getElementById('message').innerHTML = data.message;
       }
       if (data.message =="Product successfully deleted"){
-        alert(`${data.message} !`);
+        document.getElementById("message").style.color = 'red';             
+        document.getElementById('message').innerHTML = data.message;
       
       }
       window.location ='http://127.0.0.1:5500/UI/html/inventory.html';
   })
      
 }
+// delete------------------------------------------------------------------------------
   </script>
 
 </body>
