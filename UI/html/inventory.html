@@ -125,11 +125,11 @@ document.getElementById('viewProd').addEventListener('click', viewProducts);
  
   
   function deleteSingleProduct(id){
-
-
+    let product_id =id
+ 
   let token = localStorage.getItem('token')
 
-  fetch('http://127.0.0.1:5000/api/v2/products/${product.id}',{
+  fetch(`http://127.0.0.1:5000/api/v2/products/${product_id}`,{
       method: 'DELETE',
       headers: {
         'Accept': 'application/json, text/plain, */*',
