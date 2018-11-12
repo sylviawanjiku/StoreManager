@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Store Manager|Inventory</title>
+      <link rel="stylesheet" href="../Assets/css/style.css">
+  </head>
+  <body>
+    <div class="home-container">
+          <div class="home-topnav">
+              <h1>Inventory</h1>
+          </div>
+          <div class="content-topnav">  
+              <a href="index.html">Logout</a>           
+            <a href="addinventory.html">Add Inventory</a>                       
+          </div>
+          <div class="home-center">
+            <div class="home-mainbody">
+              <div class="home-mainbody-list">
+                <div class="search">
+                  <input type="search" name="Search" placeholder="Search Product"/>                  
+                  <input type="submit" value="Search"/></div>
+                  <button id="viewProducts" class="button" >View Products</button>
+                  <div>              
+                <table id="products-table">                  
+                  <tr>
+                    <th>Product Name</th>
+                    <th>Brand</th>                    
+                    <th>Quantity</th>
+                    <th>Price</th>                   
+                    <th>Avail stock</th> 
+                    <th>Minstock</th>
+                    <th>UoM</th>
+                    <th>Category</th>
+                    <th>Actions</th>                    
+                  </tr>
+                  <tbody id="prod-body"></tbody>
+                </table>
+              </div>  
+                     
+              </div>
+
+            </div>
+            <div class="home-leftbar">
+                <div class="home-leftbar">
+                    <div class="pill"><a href="products.html">Products</a></div>
+                    <div class="pill"><a href="inventory.html">Inventory</a></div>
+                    <div class="pill"><a href="salesrecord.html">Sales Record</a></div>
+                    <div class="pill"><a href="employee.html">Employee</a></div>
+            </div>
+              </div>
+          </div>
+    </div>
+  <script type="text/javascript" src="../Assets/js/script.js"></script>
+  </body>
+</html>
