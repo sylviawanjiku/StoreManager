@@ -11,18 +11,19 @@
               <h1>Inventory</h1>
           </div>
           <div class="content-topnav">  
-              <a href="index.html">Logout</a>           
+              <a id="logout" href="index.html">Logout</a>           
             <a href="addinventory.html">Add Inventory</a>                       
           </div>
           <div class="home-center">
             <div class="home-mainbody">
               <div class="home-mainbody-list">
-                <div class="search"><input type="search" name="Search" placeholder="Search Product"/>
+                <div class="search">
+                  <input type="text" id="productInput"  onkeyup="productFilter()" name="Search" placeholder="Search Product"/>                  
                   <input type="submit" value="Search"/></div>
+                  <button id="viewProducts" class="button" >View Products</button>
                   <div>              
-                <table>                  
+                <table id="products-table">                  
                   <tr>
-                    <th>Product-Id</th>
                     <th>Product Name</th>
                     <th>Brand</th>                    
                     <th>Quantity</th>
@@ -30,64 +31,10 @@
                     <th>Avail stock</th> 
                     <th>Minstock</th>
                     <th>UoM</th>
+                    <th>Category</th>
                     <th>Actions</th>                    
                   </tr>
-                  <tr>
-                      <td>flr-051</td>
-                      <td>Maize Flour</td>                      
-                      <td>Pembe</td>
-                      <td>2KG</td>
-                      <td>90</td>                     
-                      <td>50</td>                      
-                      <td>20</td>
-                      <td>Packets</td>
-                      <td><button>view</button><button>Edit</button><button>Delete</button></td>
-                  </tr>
-                  <tr>
-                      <td>tl-021</td>
-                      <td>Tea leaves</td>                      
-                      <td>Ketepa</td>
-                      <td>30grams</td>
-                      <td>20</td>                    
-                      <td>50</td>                     
-                      <td>40</td>
-                      <td>Sachets</td>
-                      <td><button>view</button><button>Edit</button><button>Delete</button></td>
-                  </tr>
-                  <tr>
-                      <td>top-001</td>
-                      <td>Toothpaste</td>                    
-                      <td>Aquafresh</td>
-                      <td>250grams</td>
-                      <td>70</td>                      
-                      <td>80</td>                     
-                      <td>10</td>
-                      <td>pieces</td>
-                      <td><button>view</button><button>Edit</button><button>Delete</button></td>
-                  </tr> 
-                  <tr>
-                      <td>Sug-001</td>
-                      <td>Sugar</td>                      
-                      <td>Mumias</td>
-                      <td>1KG</td>
-                      <td>150</td>                     
-                      <td>50</td>                      
-                      <td>20</td>
-                      <td>Kilograms</td>
-                      <td><button>view</button><button>Edit</button><button>Delete</button></td>
-                  </tr> 
-                  <tr>
-                      <td>tiss-001</td>
-                      <td>Tissue</td>                      
-                      <td>Hannan</td>
-                      <td>1 piece</td>
-                      <td>100</td>                     
-                      <td>40</td>                     
-                      <td>10</td>
-                      <td>Pieces</td>
-                      <td><button>view</button><button>Edit</button><button>Delete</button></td>
-                  </tr> 
-                  
+                  <tbody id="prod-body"></tbody>
                 </table>
               </div>  
                      
@@ -96,7 +43,7 @@
             </div>
             <div class="home-leftbar">
                 <div class="home-leftbar">
-                    <div class="pill"><a href="products.html">Products</a></div>
+                    <div class="pill"><a href="addinventory.html"> Add Products</a></div>
                     <div class="pill"><a href="inventory.html">Inventory</a></div>
                     <div class="pill"><a href="salesrecord.html">Sales Record</a></div>
                     <div class="pill"><a href="employee.html">Employee</a></div>
@@ -104,6 +51,75 @@
               </div>
           </div>
     </div>
+  <script type="text/javascript" src="../Assets/js/script.js"></script>
+  <script>
+    function productFilter() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("productInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("products-table");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
 
-  </body>
+document.getElementById('viewProducts').addEventListener('click', viewProducts);
+    
+    function viewProducts(){
+
+      let productList = document.getElementById('prod-body')
+      let token = localStorage.getItem('token')
+
+      fetch('http://127.0.0.1:5000/api/v2/products',{
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-type': 'application/json', 
+          'Access-Control-Allow-Origin':'*',
+          'Access-Control-Request-Method': '*',
+          "Authorization": 'Bearer ' + token
+        }
+      })
+     .then((res)=> res.json())
+     .then(data => {
+      if (data.message =="The product list is empty"){
+      // document.getElementById("message").style.color = 'red';             
+      // document.getElementById('message').innerHTML = data.message;
+     
+    }
+      if(data.message =="Products retrieved successfully"){
+          data.products.forEach((product,index) => {
+              productList.innerHTML += `<tr>
+                      
+                      <td>${product.product_name}</td>                      
+                      <td> ${product.brand}</td>
+                      <td> ${product.quantity}</td>
+                      <td> ${product.price}</td>                     
+                      <td> ${product.avail_stock}</td>                      
+                      <td> ${product.min_stock}</td>
+                      <td> ${product.uom}</td>
+                      <td> ${product.category}</td>
+                      <td>
+                          <button>Edit</button>
+                          <button>Delete</button>
+                      </td> 
+                    </tr>`;       
+            
+          });
+          
+        }
+    })
+    .catch((err) => console.log(err))
+   }
+  </script>
+
+</body>
 </html>
