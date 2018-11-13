@@ -8,7 +8,7 @@
   <body>
     <div class="home-container">
           <div class="home-topnav">
-              <h1>My Sales </h1>
+              <h1>View All Sales </h1>
           </div>
           <div class="content-topnav">  
               <a href="index.html">Logout</a>           
@@ -17,11 +17,11 @@
           <div class="home-center">
             <div class="home-mainbody">
               <div class="home-mainbody-list">
-                <div class="search"><input type="search" name="Search" placeholder="Search Sales"/>
+                <div class="search"><input type="text" id="saleInput" onkeyup="salesFilter()" name="Search" placeholder="Search Sales"/>
                   <input type="submit" value="Search"/></div>
                   <button id="viewSale" class="button" >View All Sales</button>
                   <div>              
-                <table>                  
+                <table id ="sales-table">                  
                   <tr>  
                     <th>Sale-id</th>
                     <th>Attendant Name</th> 
