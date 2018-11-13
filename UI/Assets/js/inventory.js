@@ -53,13 +53,14 @@ function productFilter() {
                         <td> ${product.uom}</td>
                         <td> ${product.category}</td>
                         <td>
-                            <button onclick="editProduct()">Edit</button>
-                            <button onclick="deleteSingleProduct(${product.id})">Delete</button>
-                        </td> 
+                            <button  onclick="editProduct()">Edit</button>
+                            <button  onclick="deleteSingleProduct(${product.id})">Delete</button>
+                            <button  class="button" id="sellProduct"><a href="sale.html">Sell</button>
+                            </td> 
                       </tr>`;       
               
             });
-            
+           
           }
       })
       .catch((err) => console.log(err))
