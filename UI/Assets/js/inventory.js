@@ -53,7 +53,7 @@ function productFilter() {
                         <td> ${product.uom}</td>
                         <td> ${product.category}</td>
                         <td>
-                            <button  onclick="editProduct()">Edit</button>
+                            <button onclick="editProduct()" >Edit</button>
                             <button  onclick="deleteSingleProduct(${product.id})">Delete</button>
                             <button  class="button" id="sellProduct"><a href="sale.html">Sell</button>
                             </td> 
@@ -99,4 +99,84 @@ function productFilter() {
        
   }
   // delete------------------------------------------------------------------------------
-  
+  // document.getElementById('editproduct').addEventListener('click', editProduct);
+
+      function editProduct(){
+        document.getElementById('editail-card').style.visibility='visible';
+        var table_products =document.getElementById("products-table");
+        for (var i = 0; i<table_products.rows.length; i++){
+          table_products.rows[i].onclick = function(){
+            product_id = this.cells[0].innerHTML;
+            // document.getElementById('test').value = this.cells[0].innerHTML;
+            document.getElementById('editid').value = this.cells[0].innerHTML;
+            document.getElementById('editname').value = this.cells[1].innerHTML;
+            document.getElementById('editbrand').value = this.cells[2].innerHTML;
+            document.getElementById('editquantity').value = this.cells[3].innerHTML;
+            document.getElementById('editprice').value = this.cells[4].innerHTML;
+            document.getElementById('editavailstock').value = this.cells[5].innerHTML;
+            document.getElementById('editminstock').value = this.cells[6].innerHTML;
+            document.getElementById('edituom').value = this.cells[7].innerHTML;
+            document.getElementById('editcategory').value = this.cells[8].innerHTML;
+
+            
+
+          }
+        }
+      }
+      var modifyproduct = document.getElementById('form-editproduct')
+    if (modifyproduct){
+      modifyproduct.addEventListener('submit', modifyProduct);
+
+    function modifyProduct(e){
+      e.preventDefault();
+    
+    let token = localStorage.getItem('token')
+    let id =document.getElementById('editid').value
+    let product_name = document.getElementById('editname').value;   
+    let brand = document.getElementById('editbrand').value;
+    let quantity = document.getElementById('editquantity').value;
+    let price = document.getElementById('editprice').value;
+    let avail_stock = document.getElementById('editavailstock').value; 
+    let min_stock = document.getElementById('editminstock').value;
+    let uom = document.getElementById('edituom').value;
+    let category = document.getElementById('editcategory').value;
+
+    const product_data= {
+                        "product_name": product_name,
+                        "brand": brand,
+                        "quantity": quantity,
+                        "price": price,
+                        "avail_stock": avail_stock,     
+                        "min_stock": min_stock,
+                        "uom": uom,
+                        "category": category
+                      }
+    fetch(`http://127.0.0.1:5000/api/v2/products/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-type': 'application/json', 
+        'Access-Control-Allow-Origin':'*',
+        'Access-Control-Request-Method': '*',
+        "Authorization": 'Bearer ' + token
+      },
+      body: JSON.stringify(product_data)
+      })
+      .then((res)=> res.json())
+      // .then((data) => console.log(data))
+      .then((data)=>{
+        console.log(data)
+        if(data.message == "Product not found"){
+          document.getElementById("message").style.color = 'red';             
+          document.getElementById('message').innerHTML = data.message;
+        }
+        if(data.message == "Product updated successfully updated"){
+          window.location ='http://127.0.0.1:5500/UI/html/inventory.html';
+          viewProducts()
+        }
+       
+      })
+      .catch((err) => console.log(err))
+    }
+  }
+      
