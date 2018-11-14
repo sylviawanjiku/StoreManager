@@ -8,23 +8,23 @@
   <body>
     <div class="container">
       <div class="title">
-        <h1>Add Product</h1>
+        <h1>Edit Product</h1>
       </div>
      
       <div class="min-body">
           <div class="detail-card" >
-          <form id="addproduct" class="data-form" action="products.html">
+          <form id="form-editproduct" class="data-form">
              
                 
-                Product Name<br><input type="text" name="Product Name" id="product_name" ><br>
-                Brand<br><input type="text" name="Brand" id="brand" ><br>     
-                Quantity<br><input type="text" name="Quantity" id="quantity" ><br>                
-                Price<br><input type="number" name="Price" id="price"  ><br>
-                Avail_stock:<br><input type="number" name="Product-Id" id="avail_stock" ><br>
-                minimum stock count:<br><input type="number" name="Min stock count" id="min_stock"  ><br>
-                UoM<br><input type="text" name="password" id="uom"><br>
-                Category:<br><input type="text" name="Added stock count" id="category" ><br>
-                <input type="submit" class="button" value="Add Product">
+                Product Name<br><input type="text" id="editname" name="Product Name" id="product_name" ><br>
+                Brand<br><input type="text" id="editbrand" name="Brand" id="brand" ><br>     
+                Quantity<br><input type="text" id="editquantity" name="Quantity" id="quantity" ><br>                
+                Price<br><input type="number" id="editprice" name="Price" id="price"  ><br>
+                Avail_stock:<br><input type="number" id="editavailstock" name="Product-Id" id="avail_stock" ><br>
+                minimum stock count:<br><input type="number" id="editminstock"name="Min stock count" id="min_stock"  ><br>
+                UoM<br><input type="text" id="edituom" name="uom" id="uom"><br>
+                Category:<br><input type="text" id="editcategory"name="Added stock count" id="category" ><br>
+                <input type="submit" class="button" value="Save Product">
                 
             <!-- <button class="button"  type="submit" name="New Product"><b>Add Product</b></button> -->
           </form>
@@ -36,5 +36,6 @@
       
     </div>
     <script type="text/javascript" src="../Assets/js/inventory.js"></script>
+
   </body>
 </html>

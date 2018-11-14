@@ -163,7 +163,20 @@ tr:nth-child(even) {
   padding: 20px;
   background: #ddd;
   width: 50%;
+  border-radius: 50px:
   text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#editail-card{
+  padding: 20px;
+  background: #ddd;
+  width: 50%;
+  border-radius: 50px:
+  text-align: center;
+  visibility: hidden;
   position: fixed;
    top: 50%;
    left: 50%;
